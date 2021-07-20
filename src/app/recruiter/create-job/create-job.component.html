@@ -1,0 +1,23 @@
+<div class="container">
+    <h1>Post A Job</h1>
+    <form (ngSubmit)="onPostJob(jobForm)" #jobForm="ngForm">
+        <div class="form-group">
+            <label for="Title">Job Title</label>
+            <input type="title" class="form-control" id="Title"
+                   placeholder="Job Title" 
+                   name="title" required ngModel>
+        </div>
+            <div class="form-group">
+            <label for="Experience">Experience Required</label>
+            <input type="number" class="form-control" id="Experience"
+                   placeholder="Years of experience"
+                   name="experience" required ngModel>
+        </div> 
+            <div class="form-group">
+            <label for="Description">Brief Description</label>
+            <textarea class="form-control" id="Description" rows="3" name="description" required ngModel></textarea>
+        </div>
+        
+        <button [disabled]="!jobForm.valid" class="btn btn-info">Submit</button>
+    </form>
+</div>

@@ -1,0 +1,20 @@
+<div class="row ">
+    <div class="col-xs-12">
+        <p id="reload-instruction">Reload the page to fetch new jobs (if any)</p>
+        <p id="reload-instruction" *ngIf="isLoading">Loading jobs...</p>
+        <ng-container *ngIf="!isLoading">
+            <div class="list-group-item clearfix" *ngFor="let job of jobs">
+                <div class="pull-left">
+                    <h4 class="list-group-item-heading"><b>Job Title</b>: {{job.title}}</h4>
+                    <p class="list-group-item-text"><b>Job Description</b>: {{job.description}}</p>
+                </div>
+                <span class="pull-right">
+                    <button (click)="onApply($event,job.id)" class="btn btn-success"
+                            [disabled]="job.status==='applied'"
+                            [innerHTML]="job.status==='applied'?'Applied':'Apply'"
+                            >Apply</button>
+                </span>
+            </div>
+        </ng-container>
+    </div>
+</div>

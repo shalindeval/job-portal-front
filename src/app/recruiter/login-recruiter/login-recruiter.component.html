@@ -1,48 +1,33 @@
 <div class="container">
-    <div class="row">
-		<div class="span12">
-			<form class="form-horizontal" (ngSubmit)="onSubmit(f)" #f="ngForm">
-			  <fieldset>
-			    <div id="legend">
-			      <legend class="">Recruiter Login</legend>
-			    </div>
-
-			    <div class="control-group">
-			      <!-- Username -->
-			      <label class="control-label" for="email">Email</label>
-			      <div class="controls">
-			        <input type="text" id="email"
-                    name="email" 
-                    class="input-xlarge"
-                    required
-                    email
-                    ngModel>
-			      </div>
-				  <span class="help-block" *ngIf="!f.valid && f.touched ">Please enter a valid email</span>
-			    </div>
-
-			    <div class="control-group">
-			      <!-- Password-->
-			      <label class="control-label" for="password">Password</label>
-			      <div class="controls">
-			        <input type="password" id="password"
-                    name="password"
-                    class="input-xlarge"
-                    password
-                    required
-                    ngModel>
-			      </div>
-			    </div>
-
-			    <div class="control-group">
-			      <!-- Button -->
-			      <div class="controls">
-			        <button [disabled]="!f.valid" style="margin-top: 10px;" class="btn btn-success">Login</button>
-			      </div>
-			    </div>
-			  </fieldset>
-			</form>
+	<div class="login">
+		<div class="account-login">
+		   <h1>Recruiter Login</h1>
+		   <form action="" class="login-form" (ngSubmit)="onSubmit(f)" #f="ngForm">
+			  <div class="form-group">
+					<input type="text" id="email"
+					name="email" 
+					class="input-xlarge"
+					required
+					email
+					placeholder="Email Id"
+					ngModel>
+			  </div>
+			  <span class="help-block" *ngIf="!f.valid && f.touched ">Please enter a valid email</span>
+			  <div class="form-group">
+					<input type="password" id="password"
+					name="password"
+					class="input-xlarge"
+					password
+					required
+					placeholder="Password"
+					ngModel>
+			  </div>
+	
+			  <button [disabled]="!f.valid" style="margin-top: 10px;" class="btn btn-success">Login</button>
+			  <p>Are you new?<a href="/recruiter/register">Sign Up</a></p>
+		   </form>
 		</div>
 	</div>
 	
 </div>
+

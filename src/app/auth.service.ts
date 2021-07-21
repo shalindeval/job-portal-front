@@ -4,7 +4,7 @@ import { NgForm } from "@angular/forms"
 import { throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { Router } from "@angular/router";
-import {environment} from '../environments/environment.prod'
+import {environment} from '../environments/environment'
 
 @Injectable()
 export class AuthService{

@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import {environment} from '../../environments/environment.prod'
+import {environment} from '../../environments/environment'
 
 const baseUrl = environment.server_url
 

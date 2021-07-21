@@ -1,31 +1,34 @@
 <div class="container">
-    <h1>Create a Profile!</h1>
-    <form (ngSubmit)="onRegister(f)" #f="ngForm">
-        <div class="form-group">
-            <label for="Name">Name</label>
-            <input type="name" class="form-control" id="Name"
-                   placeholder="Name" 
-                   name="name" required ngModel>
-        </div>
-            <div class="form-group">
-            <label for="Email">Email</label>
-            <input type="email" class="form-control" id="Email"
-                   placeholder="Email Id"
-                   name="email" required email ngModel>
-        </div>
-        
-        <div class="form-group">
-            <label for="Password">Password</label>
-            <input type="password" class="form-control" id="Password"
-                   placeholder="Enter a Password"
-                   name="password" required password ngModel>
-        </div> 
+	<div class="login">
+		<div class="account-login">
+		<h1>Applicant Register</h1>
+		<form action="" class="login-form" (ngSubmit)="onRegister(f)" #f="ngForm">
+			<div class="form-group">
+                <input type="name" class="form-control" id="Name"
+                placeholder="Name" 
+                name="name" required ngModel>
+			</div>
 
-        <div class="form-group">
-            <label for="Resume">Upload Resume</label>
-            <input accept=".pdf" (change)="onFileSelect($event)" type="file" class="form-control-file" id="Resume" name="resume">
-        </div>
-        
-        <button [disabled]="!f.valid || !isResumeValid" class="btn btn-info">Register</button>
-    </form>
+			<div class="form-group">
+                <input type="email" class="form-control" id="Email"
+                    placeholder="Email Id"
+                    name="email" required email ngModel>
+			</div>
+
+            <div class="form-group">
+                <input type="password" class="form-control" id="Password"
+                placeholder="Enter a Password"
+                name="password" required password ngModel>
+            </div>
+
+            <div class="form-group" style="margin-top: 10px;">
+                <label for="Resume">Upload Resume</label>
+                <input accept=".pdf" (change)="onFileSelect($event)" type="file" class="form-control-file" id="Resume" name="resume">
+            </div>
+
+			<button [disabled]="!f.valid || !isResumeValid" class="btn btn-info">Register</button>
+		
+        </form>
+		</div>
+	</div>
 </div>

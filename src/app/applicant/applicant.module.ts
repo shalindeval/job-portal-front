@@ -1,6 +1,7 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
+import { MatToolbarModule } from "@angular/material/toolbar";
 import { ApplicantRegisterComponent } from "./applicant-register/applicant-register.component";
 import { ApplicantRoutingModule } from "./applicant-routing.module";
 import { ApplicantComponent } from "./applicant.component";
@@ -23,7 +24,8 @@ import { RegisterApplicantComponent } from "./register-applicant/register-applic
     imports:[
         FormsModule,
         CommonModule,
-        ApplicantRoutingModule
+        ApplicantRoutingModule,
+        MatToolbarModule
     ],
 })
 export class ApplicantModule{

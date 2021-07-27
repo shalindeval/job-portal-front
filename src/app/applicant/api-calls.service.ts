@@ -7,28 +7,23 @@ import {environment} from '../../environments/environment'
 
 const baseUrl = environment.server_url
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class ApiCallService {
 
   currentUser = localStorage.getItem('currentUser')
-  token_obj = this.currentUser?JSON.parse(this.currentUser):{}
   userId = this.currentUser?JSON.parse(this.currentUser).user.id:""
-  
-  header_obj = {headers: new HttpHeaders().set('Authorization', `Bearer ${this.token_obj.accessToken}`)}
 
   constructor(private httpClient: HttpClient, ) { }
 
   getAllJobs(){
-    return this.httpClient.get(`${baseUrl}/jobs`, this.header_obj)
+    return this.httpClient.get(`${baseUrl}/jobs`)
     .pipe(map((data)=>{
       return data
     }), catchError(e=>{ return throwError(e)}))
   }
 
   getMyApplications(){
-    return this.httpClient.get(`${baseUrl}/users/${this.userId}`, this.header_obj)
+    return this.httpClient.get(`${baseUrl}/users/${this.userId}`)
     .pipe(map((data)=>{
       return data
     }), catchError(e=>{ return throwError(e)}))
@@ -36,7 +31,7 @@ export class ApiCallService {
 
   applyToJob(jobId:string){
     const body_obj = {jobId}
-    return this.httpClient.post(`${baseUrl}/users/apply/`,body_obj, this.header_obj)
+    return this.httpClient.post(`${baseUrl}/users/apply/`,body_obj)
     .pipe(map((data)=>{
       return data
     }), catchError(e=>{ return throwError(e)}))
@@ -44,7 +39,7 @@ export class ApiCallService {
 
   createJob(form: NgForm){
     const body = form.value
-    return this.httpClient.post(`${baseUrl}/jobs/create`,body, this.header_obj)
+    return this.httpClient.post(`${baseUrl}/jobs/create`,body)
     .pipe(map((data)=>{
       return data
     }), catchError(e=>{ return throwError(e)}))
@@ -52,14 +47,14 @@ export class ApiCallService {
 
   deleteJob(jobId:string){
     const body_obj = {jobId}
-    return this.httpClient.delete(`${baseUrl}/jobs/${jobId}`, this.header_obj)
+    return this.httpClient.delete(`${baseUrl}/jobs/${jobId}`)
     .pipe(map((data)=>{
       return data
     }), catchError(e=>{ return throwError(e)}))
   }
 
   getRecruiterProfile(){
-    return this.httpClient.get(`${baseUrl}/recruiter/${this.userId}`, this.header_obj)
+    return this.httpClient.get(`${baseUrl}/recruiter/${this.userId}`)
     .pipe(map((data)=>{
       return data
     }), catchError(e=>{ return throwError(e)}))
@@ -67,7 +62,7 @@ export class ApiCallService {
 
   updateRecruiterProfile(form:NgForm){
     const body = form.value
-    return this.httpClient.post(`${baseUrl}/recruiter/${this.userId}`,body, this.header_obj)
+    return this.httpClient.post(`${baseUrl}/recruiter/${this.userId}`,body)
     .pipe(map((data)=>{
       return data
     }), catchError(e=>{ return throwError(e)}))
@@ -75,7 +70,7 @@ export class ApiCallService {
 
   getApplicantProfile(){
 
-    return this.httpClient.get(`${baseUrl}/users/${this.userId}`, this.header_obj)
+    return this.httpClient.get(`${baseUrl}/users/${this.userId}`)
     .pipe(map((data)=>{
       return data
     }), catchError(e=>{ return throwError(e)}))
@@ -83,7 +78,7 @@ export class ApiCallService {
 
   updateApplicantProfile(form:NgForm){
     const body = form.value
-    return this.httpClient.post(`${baseUrl}/users/${this.userId}`,body, this.header_obj)
+    return this.httpClient.post(`${baseUrl}/users/${this.userId}`,body)
     .pipe(map((data)=>{
       return data
     }), catchError(e=>{ return throwError(e)}))
@@ -95,7 +90,7 @@ export class ApiCallService {
     for(let key in form.value){
       formData.append(key,form.value[key])
     }
-    return this.httpClient.post(`${baseUrl}/users/resume/${this.userId}`,formData, this.header_obj)
+    return this.httpClient.post(`${baseUrl}/users/resume/${this.userId}`,formData)
     .pipe(map((data)=>{
       return data
     }), catchError(e=>{ return throwError(e)}))

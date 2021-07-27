@@ -14,18 +14,13 @@ export class AuthService{
 
   SERVER_URL = environment.server_url
 
-  // isAuthenticated(){
-  //   const token = localStorage.getItem('currentUser')
-  //   console.log(token)
-  //   if(token && this.jwtHelperService.isTokenExpired(token)){
-  //     return true
-  //   }
-  //   return false
-  // }
-
-  //dummy authentication
   isAuthenticated():boolean{
     return localStorage.getItem('currentUser')!==null
+  }
+
+  getToken(){
+    const currentUser = localStorage.getItem('currentUser')
+    return currentUser?JSON.parse(currentUser).accessToken:null
   }
 
   onLoginApplicant(form: NgForm){
